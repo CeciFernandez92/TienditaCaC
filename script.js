@@ -23,7 +23,7 @@ function validateUser(event) {
         document.getElementById("welcome-message").style.display = "block";
         document.getElementById('id01').style.display = "none";
 
-        // Mostrar botón de logout y mensaje de bienvenida en el header
+    
         document.getElementById("loginButton").style.display = "none";
         const welcomeHeader = document.createElement('span');
         welcomeHeader.id = "userWelcome";
@@ -56,7 +56,7 @@ function validateUser(event) {
         headerNavigation.appendChild(welcomeHeader);
         headerNavigation.appendChild(logoutButton);
 
-        // Guardar el estado de login
+   
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('username', username);
     }
