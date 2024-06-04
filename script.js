@@ -99,3 +99,35 @@ window.onload = function () {
 
     }
 }
+
+// Consumo de API
+
+const apiUrl = 'https://fakestoreapi.com/products';
+
+const loadProducts = async () => {
+    try {
+        const response = await fetch(apiUrl);
+        const products = await response.json();
+        displayProducts(products);
+    } catch (error) {
+        console.error('Error al cargar los productos:', error);
+    }
+};
+
+const displayProducts = (products) => {
+    const productsGrid = document.getElementById('products-grid');
+    productsGrid.innerHTML = products.map(product => `
+        <div class="product-card" data-id="${product.id}" onclick="redirectToProductDetail(${product.id})">
+            <img src="${product.image}" alt="${product.title}" />
+            <h2>${product.title}</h2>
+            <p>$${product.price}</p>
+        </div>
+    `).join('');
+};
+
+const redirectToProductDetail = (productId) => {
+    window.location.href = `product.html?id=${productId}`;
+};
+
+// Cargar productos al cargar la página
+window.onload = loadProducts;
